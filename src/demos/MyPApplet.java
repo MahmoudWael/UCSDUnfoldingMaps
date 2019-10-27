@@ -15,7 +15,7 @@ public class MyPApplet extends PApplet{
 	PImage img;
 	
 	public void setup() {
-		//Add setup code for MyPApplet
+		//Add setup code for mydemos.MyPApplet
 		size(400,400);				//set canvas size
 		background(255);			//set canvas color
 		stroke(0);				//set pen color
@@ -23,7 +23,7 @@ public class MyPApplet extends PApplet{
 	}
 	
 	public void draw() {
-		//Add drawing code for MyPApplet
+		//Add drawing code for mydemos.MyPApplet
 		img.resize(0, height);			//resize loaded image to full height of canvas
 		image(img, 0, 0);			//display image 
 		int[] color = sunColorSec(second());		//calculate color code for sun
@@ -51,7 +51,7 @@ public class MyPApplet extends PApplet{
 	
 	public static void main (String[] args) {
 		//Add main method for running as application
-		PApplet.main(new String[] {"--present", "MyPApplet"});
+		PApplet.main(new String[] {"--present", "mydemos.MyPApplet"});
 	}
 }
 

@@ -1,3 +1,5 @@
+package mydemos;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
