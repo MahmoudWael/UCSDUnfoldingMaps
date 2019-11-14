@@ -77,7 +77,10 @@ public class EarthquakeCityMap extends PApplet {
 	    // to create a new SimplePointMarker for each PointFeature in 
 	    // earthquakes.  Then add each new SimplePointMarker to the 
 	    // List markers (so that it will be added to the map in the line below)
-	    
+		for (PointFeature p:
+			 earthquakes) {
+			markers.add(createMarker(p));
+		}
 	    
 	    // Add the markers to the map so that they are displayed
 	    map.addMarkers(markers);
@@ -108,7 +111,8 @@ public class EarthquakeCityMap extends PApplet {
 		// Here is an example of how to use Processing's color method to generate 
 	    // an int that represents the color yellow.  
 	    int yellow = color(255, 255, 0);
-		
+		int blue = color(0,0,255);
+		int red = color(255,0,0);
 		// TODO (Step 4): Add code below to style the marker's size and color 
 	    // according to the magnitude of the earthquake.  
 	    // Don't forget about the constants THRESHOLD_MODERATE and 
@@ -116,8 +120,17 @@ public class EarthquakeCityMap extends PApplet {
 	    // Rather than comparing the magnitude to a number directly, compare 
 	    // the magnitude to these variables (and change their value in the code 
 	    // above if you want to change what you mean by "moderate" and "light")
-	    
-	    
+	    if(mag < THRESHOLD_LIGHT) {
+	    	marker.setColor(blue);
+	    	marker.setRadius(7);
+		}else if(mag > THRESHOLD_LIGHT && mag < THRESHOLD_MODERATE){
+			marker.setColor(yellow);
+			marker.setRadius(10);
+		}else {
+			marker.setColor(red);
+			marker.setRadius(15);
+		}
+
 	    // Finally return the marker
 	    return marker;
 	}
@@ -134,6 +147,22 @@ public class EarthquakeCityMap extends PApplet {
 	private void addKey() 
 	{	
 		// Remember you can use Processing's graphics methods here
+		fill(255,255,255);
+		rect(20,50, 140, 250);
+		fill(0,0,0);
+		text("Earthquake key",40,80);
+		fill(255,0,0);
+		ellipse(40, 120,15,15);
+		fill(0,0,0);
+		text(THRESHOLD_MODERATE + "+ Magnitude", 55,127);
+		fill(255,255,0);
+		ellipse(40, 140,10,10);
+		fill(0,0,0);
+		text(THRESHOLD_LIGHT + "+ Magnitude", 55,145);
+		fill(0,0,255);
+		ellipse(40, 160,7,7);
+		fill(0,0,0);
+		text("below "+ THRESHOLD_LIGHT, 55,163);
 	
 	}
 }
